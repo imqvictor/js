@@ -1,5 +1,5 @@
 
-# JavaScript Projects 🚀
+# JavaScript Projects 
 
 ## 👨‍💻 About This Repository
 
