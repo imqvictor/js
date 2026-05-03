@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --fbg: rgb(242, 34, 34);
+    --nbg: rgb(15, 168, 15);
+
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background-color: beige;
+}
+
+.card {
+    width: 230px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.bulbs {
+    width: 100%;
+}
+
+.bulbs>img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.btn>button {
+    padding: 4px 10px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--fbg);
+    border: none;
+}
