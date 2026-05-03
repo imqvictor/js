@@ -37,21 +37,6 @@ I focus on building practical, real-world applications to strengthen my understa
 
 ---
 
-## ⚙️ How to Use
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/js-projects.git
-   ```
-2. Navigate into the folder:
-
-   ```bash
-   cd js-projects
-   ```
-3. Open any project folder and run `index.html` in your browser
-
----
 
 ## 🛠️ Tech Stack
 
@@ -67,11 +52,7 @@ To become a skilled frontend developer by consistently building and improving re
 
 ---
 
-## 📌 Note
 
-Each project is stored in its own folder and may include its own README with more details.
-
----
 
 ## 🤝 Feedback
 
