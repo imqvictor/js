@@ -95,13 +95,15 @@ function generateHtml() {
 
     items.forEach((item) => {
         content += `
-              <div class="cardy">
-                <img src="assets/${item.thumb}" alt="" width="50px">
-                <div class="new">New</div>
-                <button type="button" class="add">Add to cart</button>
-            </div>
-            <div class="details">${item.title}<br>
-                <b>${item.price}</b><sup>${item.discount}</sup>
+                   <div class="jorker">
+                <div class="cardy">
+                    <img src="assets/${item.thumb}" alt="" width="50px">
+                    <div class="new">New</div>
+                    <button type="button" class="add">Add to cart</button>
+                </div>
+                <div class="details">${item.title} <br>
+                    <b>${item.price}</b><sup>${item.discount}</sup>
+                </div>
             </div>
         `
     })

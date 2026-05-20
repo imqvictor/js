@@ -26,7 +26,8 @@ const items = [
 
 ];
 
-const wrapper = document.querySelector('main');
+const wrapper = document.querySelector('.apps');
+
 
 (function init() {
     wrapper.innerHTML = innerHT();
@@ -35,18 +36,18 @@ function innerHT() {
     let content = "";
     items.forEach((item) => {
         content += `
-          <div class="apps">
-                <div class="img-wrapper">
-                    <img src="assets/${item.img}" alt="drop box" width="50px">
-                    <p class="desc">${item.name}</p>
-                    <div class="btn">
-                        <img src="assets/plus.svg" alt="plus" width="50px">
-                        <p>ADD</p>
-                    </div>
-                     </div>
-                <button type="button">ADD MORE APPS</button>
+         <div class="apps">
+            <div class="img-wrapper">
+                <img src="assets/${item.img}" alt="drop box" width="50px">
+                <p class="desc">${item.name}</p>
+                <button class="btn">
+                    <img src="assets/plus.svg" alt="plus" width="50px">
+                    <p>ADD</p>
+                </button>
             </div>
-        `
+        </div>
+                `
+
     })
     return content;
 }
