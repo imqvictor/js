@@ -50,15 +50,15 @@ const quotes = [
     },
     {
         quote: "Great things never come from comfort zones.",
-        author: "Unknown"
+        author: "Galileo"
     },
     {
         quote: "Push yourself, because no one else is going to do it for you.",
-        author: "Unknown"
+        author: "Lighting"
     },
     {
         quote: "Small steps every day lead to big results.",
-        author: "Unknown"
+        author: "Graham"
     }
 ];
 
@@ -68,5 +68,5 @@ but.addEventListener('click', random);
 function random() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const post = document.querySelector('#q');
-    post.textContent = quotes[randomIndex].quote;
+    post.textContent = quotes[randomIndex].author + ": " + quotes[randomIndex].quote;
 }
