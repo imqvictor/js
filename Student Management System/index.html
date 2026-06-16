@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+</head>
+
+<body>
+
+    <head>
+        <h1>Student Management System</h1>
+        <p>Welcome to the Student Management System. Please select an option below:</p>
+    </head>
+
+    <div class="card">
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required><br><br>
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age"><br><br>
+            <label for="mks">Marks</label>
+            <input type="text" name="mks" id="mks">
+        </form><br>
+        <button type="button" onclick="addStudent()">Add Student</button>
+
+        <button type="button" onclick="displayStudents()">Display Students</button>
+        <p id="studentList"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
