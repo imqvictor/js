@@ -15,18 +15,21 @@
     </head>
 
     <div class="card">
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required><br><br>
-            <label for="age">Age:</label>
+        <form id="fm1">
+            <label for="name" id="nlble">Name:</label>
+            <input type="text" name="name" id="name"><br><br>
+            <label for="age" id="alble">Age:</label>
             <input type="number" name="age" id="age"><br><br>
-            <label for="mks">Marks</label>
-            <input type="text" name="mks" id="mks">
+            <label for="mks" id="mlble">Marks</label>
+            <input type="text" name="mks" id="mks"><br>
         </form><br>
-        <button type="button" onclick="addStudent()">Add Student</button>
 
+        <button type="button" onclick="addStudent()">Add Student</button>
         <button type="button" onclick="displayStudents()">Display Students</button>
         <p id="studentList"></p>
+
+        <button type="button" onclick="studentsAverage()">Studenst Average</button>
+        <div id="average"></div>
     </div>
 
     <script src="script.js"></script>
