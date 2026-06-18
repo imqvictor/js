@@ -71,6 +71,7 @@ function displayStudents() {
 
 
 function getAverage(marks) {
+
     if (marks.length === 0) {
         return 0;
     }
@@ -83,18 +84,15 @@ function getAverage(marks) {
 }
 
 function studentsAverage() {
-    let sAverage = document.getElementById('"average');
-    sAverage.innerHTML = " ";
+    const pel = document.getElementById('pele');
 
     students.forEach(student => {
-        const average = getAverage(students.marks);
+        const average = getAverage(student.marks);
+        const p = document.createElement('p');
 
-        sAverage.innerHTML += `
-        <p>
-        ${student.name}
-        -Average:${average.toFixed(2)}
-        </p>
-        `;
+        p.innerHTML = `${student.name} -Average:${average}`
+
+        pel.appendChild(p);
     });
 
 }
