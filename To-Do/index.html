@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Application</title>
+</head>
+
+<body>
+
+    <div class="card">
+        <h3>My To-Do List</h3>
+
+        <div class="nav">
+            <h4>Task</h4>
+            <input type="text" id="taskInput" placeholder="Add your task">
+            <select name="" id="priority">
+                <option value="" selected>Select priority</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <select name="" id="category">
+                <option value="" selected>Select Category</option>
+                <option value="school">School</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="shopping">Shopping</option>
+            </select>
+            <button type="button" id="addTask">Add Task</button>
+        </div>
+
+        <h4>Search</h4>
+        <input type="search" id="searchInput" placeholder="Search your task">
+        <select name="" id="filter">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+        </select>
+
+        <h4>Tasks</h4>
+        <div id="taskContainer"></div>
+
+        <div class="details">
+            <p>Total tasks: <span id="totalTasks">0</span></p>
+            <p>Completed: <span id="completeTasks">0</span></p>
+            <p>Pending: <span id="pendingTasks">0</span></p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
