@@ -68,10 +68,17 @@ f4m.appendChild(mError);
 function displayStudents() {
     const studentList = document.getElementById('studentList');
     studentList.innerHTML = '';
+
     students.forEach(student => {
         const studentItem = document.createElement('li');
         studentItem.textContent = `Name: ${student.name}, Age: ${student.age}, ID: ${student.id},
-        Marks:${student.marks}`;
+        Marks:${student.marks}` + " ";
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = () => deleteStudent(student.id);
+
+        studentItem.appendChild(deleteButton);
         studentList.appendChild(studentItem);
     });
 }
@@ -104,8 +111,17 @@ function studentsAverage() {
 
 }
 
-function removeStudent() {
-    students.forEach(student => {
 
-    })
+function deleteStudent(id) {
+    const index = students.findIndex(student => student.id === id);
+    if (index !== -1) {
+        students.splice(index, 1);
+
+        localStorage.setItem("students", JSON.stringify(students));
+
+        displayStudents();
+        studentsAverage();
+    }
 }
+
+
