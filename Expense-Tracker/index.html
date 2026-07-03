@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+</head>
+
+<body>
+    <div class="card">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <label for="description">Description</label>
+        <input type="text" id="description" placeholder="Enter description">
+        <label for="category">Category</label>
+        <select id="category">
+            <option value="" selected>Categories</option>
+            <option value="food">Food</option>
+            <option value="transportation">Transportation</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="utilities">Utilities</option>
+            <option value="shopping">Shopping</option>
+            <option value="education">Education</option>
+        </select>
+        <label for="date">Date</label>
+        <input type="date" id="date">
+        <button type="button" id="addExpense">Add Expense</button>
+
+        <h4>Search</h4>
+        <input type="search" id="search" placeholder="search expenses">
+        <select name="filter" id="filter">
+            <option value="all">All Categories</option>
+            <option value="food">Food</option>
+            <option value="transportation">Transportation</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="utilities">Utilities</option>
+            <option value="shopping">Shopping</option>
+            <option value="education">Education</option>
+        </select>
+
+        <h4>Expenses</h4>
+        <ol id="expense-list"></ol>
+
+        <h4>Statistics</h4>
+        <p>Total Expenses: <span id="total-expenses">0</span></p>
+        <p>Total Amount: <span id="total-amount">0</span></p>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

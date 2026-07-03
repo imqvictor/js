@@ -122,3 +122,4 @@ const completedTasks = document.getElementById('completeTasks');
 completedTasks.textContent = `${tasks.filter(task => task.completed).length}`;
 const pendingTasks = document.getElementById('pendingTasks');
 pendingTasks.textContent = `${tasks.filter(task => !task.completed).length}`;
+
