@@ -142,7 +142,7 @@ const searchInput = document.getElementById("search");
 searchInput.addEventListener('input', searchExpense);
 
 function searchExpense() {
-    const searchText = searchInput.value.trim().toLowerCase();
+    const searchText = searchInput.value.toLowerCase().trim();
 
 
     const filteredSearch = expenses.filter(expense =>

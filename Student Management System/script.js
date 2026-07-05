@@ -1,4 +1,4 @@
-const students = JSON.parse(localStorage.getItem("students") || []);
+const students = JSON.parse(localStorage.getItem("students")) || [];
 
 
 let nameInput = document.getElementById('name');

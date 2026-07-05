@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navbgc: #000000;
+    --col: #fff;
+}
+
+body {
+    background-color: var(--col);
+}
+
+nav {
+    background-color: var(--navbgc);
+
+}
+
+nav,
+ul,
+li,
+a {
+    list-style-type: none;
+    text-decoration: none;
+    color: var(--col);
+}
+
+ul,
+li {
+    display: flex;
+    justify-content: end;
+    padding: 7px;
+    padding-right: 3rem;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 5rem;
+    background-image: url(assets/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: var(--col);
+}
+
+.btn>button {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+    width: fit-content;
+    background-color: #000000;
+    padding: 4px 8px;
+}
+
+address {
+    padding: 8px;
+    background-color: var(--navbgc);
+    color: var(--col);
+    font-family: "inter", sans-serif;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.about {
+    background-image: url(assets/abouthero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: var(--col);
+    font-size: 18px;
+    font-weight: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 4rem;
+    padding-top: 85px;
+    height: 250px;
+}
+
+.about>button {
+    width: fit-content;
+    padding: 4px 8px;
+    background-color: #000;
+}
+
+.story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: green;
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+
+.mvv {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mvv>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.mission {
+    background-color: blue;
+}
+
+.vission {
+    background-color: #000;
+    color: #fff;
+}
+
+.values {
+    background-color: red;
+}
+
+.why {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 1rem;
+
+}
+
+.why>div {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+    background-color: red;
+}
+
+.why-us {
+    text-align: center;
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    background-color: green;
+    padding: 15px;
+    margin-bottom: 1rem;
+}
+
+.team>div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.top>div {
+    border: 1px solid #000;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.bottom>div {
+    border: 1px solid #000;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.exp {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    gap: 5px;
+}
+
+.exp>button {
+    width: fit-content;
+    padding: 4px 8px;
+    background-color: #000;
+    margin-bottom: 1rem;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: red;
+}
