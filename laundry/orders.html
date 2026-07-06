@@ -10,7 +10,7 @@
 <body>
     <nav>
         <div>
-            <h3>laundry management</h3>
+            <h3>Laundry Management System</h3>
         </div>
 
         <div>
@@ -24,10 +24,48 @@
     </nav>
 
     <div class="card">
+        <div class="order-nav">
+            <h3>order Management</h3>
+            <input type="search" id="searchOrder" placeholder="searchOrder">
+            <select name="status" id="status">
+                <option value="all">All</option>
+                <option value="pending">Pending</option>
+                <option value="washing">washing</option>
+                <option value="ironing">ironing</option>
+                <option value="completed">Completed</option>
+            </select>
+            <div>
+                <label for="selectCustomer">customer:</label>
+                <select name="" id="selectCustomer">
+                    <option value="">Select Customer</option>
+                </select>
+                <label for="selectLaundry">Laundry Type:</label>
+                <select name="" id="selectLaundry">
+                    <option value="" selected>Select Laundry Type</option>
+                    <option value="wash">Wash</option>
+                    <option value="dry">Dry</option>
+                    <option value="iron">Iron</option>
+                </select>
+                <label for="quatntity">Quantity:</label>
+                <input type="number" id="Quantity" placeholder="eg;5">
+                <label for="price">Price per item(KES):</label>
+                <input type="number" id="price" placeholder="eg;500.00">
+                <input type="date" placeholder="select a date" id="date">
+                <button type="button" id="addOrderBtn">Add Order</button>
+                <p>Total price: <span id="totalPrice">0</span></p>
+            </div>
+        </div>
+
+        <div class="inner-card">
+            <div>
+                <ol id="displayOrders"></ol>
+            </div>
+
+        </div>
 
     </div>
-
-    <script src="script.js"></script>
+    <script src="storage.js"></script>
+    <script src="orders.js"></script>
 </body>
 
 </html>

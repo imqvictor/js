@@ -1,4 +1,4 @@
-const customers = JSON.parse(localStorage.getItem("customers")) || [];
+const customers = getCustomers();
 console.log(customers.length);
 const nameInput = document.getElementById("name");
 const phoneINput = document.getElementById("phone");
@@ -106,4 +106,7 @@ function searchCustomer() {
 
     displayCustomers(filteredSearch);
 }
+
+
+
 
