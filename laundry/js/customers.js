@@ -2,7 +2,6 @@ const customers = getCustomers();
 console.log(customers.length);
 const nameInput = document.getElementById("name");
 const phoneINput = document.getElementById("phone");
-const dateInput = document.getElementById("date");
 const emailInput = document.getElementById("email");
 const addCustomerBtn = document.getElementById("addCustomerBtn");
 addCustomerBtn.addEventListener("click", addCustomer);
@@ -10,7 +9,6 @@ addCustomerBtn.addEventListener("click", addCustomer);
 function addCustomer() {
     const name = nameInput.value.trim();
     const phone = phoneINput.value.toString().trim();
-    const date = dateInput.value.trim();
     const email = emailInput.value.trim();
 
     if (name === "") {
@@ -25,19 +23,24 @@ function addCustomer() {
         alert("please enter an email");
         return false;
     }
-    if (date === "") {
-        alert("please enter a date");
-        return false;
-    }
 
+    const now = new Date();
 
     const customer = {
-        id: customers.length + 1,
+        id: Date.now(),
         name: name,
         phone: phone,
         email: email,
-        date: date
-    }
+        dateCreated: now.toLocaleString("en-KE", {
+            year: "numeric",
+            month: "short",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false
+        })
+    };
     customers.push(customer);
     localStorage.setItem("customers", JSON.stringify(customers));
     displayCustomers();
@@ -53,25 +56,28 @@ function displayCustomers(customersToDisplay = customers) {
     displayCustomers.innerHTML = "";
 
     customersToDisplay.forEach(customer => {
-        const info = document.createElement("li");
-        info.textContent = `
-         ${customer.id}.
-          Name:${customer.name},
-          Phone:${customer.phone},
-          Email:${customer.email},
-          Date:${customer.date}
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${customer.id}</td>
+          <td>${customer.name}</td> 
+          <td>${customer.phone}</td> 
+          <td>${customer.email}</td> 
+          <td>${customer.dateCreated}</td> 
          `
-        displayCustomers.appendChild(info);
 
+        const btnCell = document.createElement("td")
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
-        info.appendChild(editBtn);
+        btnCell.appendChild(editBtn);
 
         const deletBtn = document.createElement("button");
-        deletBtn.textContent = "Delet";
-        info.appendChild(deletBtn);
+        deletBtn.textContent = "Delete";
         deletBtn.addEventListener('click', () => deletCustomer(customer.id));
+        btnCell.appendChild(deletBtn);
 
+
+        row.appendChild(btnCell);
+        displayCustomers.appendChild(row);
     });
 
 }

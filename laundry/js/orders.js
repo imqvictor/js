@@ -27,7 +27,6 @@ const quantityInput = document.getElementById("Quantity");
 const priceInput = document.getElementById("price");
 const addOrderBtn = document.getElementById("addOrderBtn");
 addOrderBtn.addEventListener('click', addOrder);
-const dateInput = document.getElementById("date");
 
 const totalPriceElement = document.getElementById("totalPrice");
 
@@ -45,7 +44,6 @@ function addOrder() {
     const quantity = quantityInput.value.toString().trim();
     const price = priceInput.value.toString().trim();
     const customer = selectCustomer.value.trim();
-    const date = dateInput.value.toString().trim();
 
     if (customer === "") {
         alert("please select a customer");
@@ -63,23 +61,30 @@ function addOrder() {
         alert("please enter a price");
         return false;
     }
-    if (date === "") {
-        alert("please enter a date");
-        return false;
-    }
+
+    const now = new Date();
 
     const quantityCalculate = parseFloat(quantityInput.value) || 0;
     const priceCalculate = parseFloat(priceInput.value) || 0;
     const totalPrice = quantityCalculate * priceCalculate;
 
     const order = {
-        id: orders.length + 1,
+        id: Date.now(),
         customerName: customer,
         laundryType: selectLaundryType,
         quantity: quantity,
         price: price,
         totalPrice: totalPrice,
-        date: date
+        dateCreated: now.toLocaleString("en-KE", {
+            year: "numeric",
+            month: "short",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false
+        }),
+        status: "pending"
     }
     orders.push(order);
     localStorage.setItem("orders", JSON.stringify(orders));
@@ -88,7 +93,6 @@ function addOrder() {
     quantityInput.value = "";
     priceInput.value = "";
     selectCustomer.value = "";
-    dateInput.value = "";
     totalPriceElement.textContent = "0";
 
     console.log(order.laundryType);
@@ -100,23 +104,52 @@ function displayOrders(ordersToDisplay = orders) {
     displayOrders.innerHTML = "";
 
     ordersToDisplay.forEach(order => {
-        const listedOrders = document.createElement("li");
-        listedOrders.textContent = `
-        id:${order.id},
-        customerName:${order.customerName},
-        laundryType:${order.laundryType},
-        price:${order.price},
-        quantity:${order.quantity},
-        totalPrice:${order.totalPrice},
-        Date:${order.date}
-        `
-        displayOrders.appendChild(listedOrders);
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${order.id}</td> 
+            <td>${order.customerName}</td> 
+            <td>${order.quantity}</td>     
+            <td>${order.laundryType}</td>     
+            <td>${order.price}</td>     
+            <td>${order.totalPrice}</td>    
+            <td>${order.dateCreated}</td>
+`
+        displayOrders.appendChild(row);
+
+        const actionCell = document.createElement("td");
+        const actionSelection = document.createElement("select");
+        actionSelection.innerHTML = ` 
+                    <option value="pending" >Pending</option>
+                    <option value="washing">Washing</option>
+                    <option value="ironing">Ironing</option>
+                    <option value="drying">Drying</option>
+                    <option value="ready">Ready</option>
+                    <option value="completed">Completed</option>
+                              `
+        actionSelection.value = order.status;
+
+        const currentStatus = document.createElement("td");
+        currentStatus.textContent = order.status;
+
+        actionSelection.addEventListener("change", () => {
+            console.log("Changed to:", actionSelection.value);
+            order.status = actionSelection.value;
+            currentStatus.textContent = order.status;
+
+            localStorage.setItem("orders", JSON.stringify(orders));
+
+        });
+
 
         const deletBtn = document.createElement("button");
         deletBtn.textContent = "Delete";
         deletBtn.addEventListener('click', () => deleteOrder(order.id));
 
-        listedOrders.appendChild(deletBtn);
+        actionCell.appendChild(actionSelection);
+        actionCell.appendChild(deletBtn);
+        row.appendChild(currentStatus);
+        row.appendChild(actionCell);
+
 
     })
 }
@@ -150,4 +183,19 @@ function searchOrder() {
         order.price.includes(searchText)
     );
     displayOrders(filtered)
+}
+
+const searchCategory = document.getElementById("searchCategory");
+searchCategory.addEventListener('change', searchByCategory)
+
+function searchByCategory() {
+    const filteredSearch = searchCategory.value.toLowerCase();
+
+    let filteredStatus;
+    if (filteredSearch === "all") {
+        filteredStatus = orders;
+    } else {
+        filteredStatus = orders.filter(order => order.status === filteredSearch);
+    }
+    displayOrders(filteredStatus);
 }
