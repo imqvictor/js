@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bgc: #ffffff;
+    --boderCol: #000000;
+    --editBtnCol: #000000;
+}
+
+.card {
+    margin: 3rem;
+    padding: 2rem;
+    background-color: var(--bgc);
+    border: 1px solid var(--boderCol);
+    border-radius: 15px;
+}
+
+.customer-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.innCustomer-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 13px;
+}
+
+.inner-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+    border: 1px solid var(--boderCol);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#btnClass {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#btnClass>button {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+#editBtnId {
+    background-color: var(--editBtnCol);
+    color: var(--bgc);
+}

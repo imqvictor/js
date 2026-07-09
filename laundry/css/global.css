@@ -10,6 +10,9 @@
     --navBgc: #000000;
     --navTxtCol: #ffffff;
     --navHoov: red;
+    --thBgc: #000000;
+    --thCol: #ffffff;
+    --delBtnCol: red;
 }
 
 body {
@@ -47,4 +50,37 @@ a {
 
 .links:hover {
     background-color: var(--navHoov);
+}
+
+table {
+    width: 100%;
+    padding: 5px;
+}
+
+th {
+    background-color: var(--thBgc);
+    color: var(--thCol);
+    font-size: 10px;
+    padding: 5px;
+}
+
+td {
+    padding: 5px;
+    font-size: 14px;
+}
+
+#deletBtnId {
+    background-color: var(--delBtnCol);
+    color: var(--bgc);
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+#addBtn {
+    background-color: var(--delBtnCol);
+    color: var(--bgc);
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>laundry management system</title>
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/payment.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,16 +30,23 @@
     </nav>
 
     <div class="card">
-        <table id="paymentsTable" border="1">
-            <thead>
-                <th>ORDER ID</th>
-                <th>CUSTOMER</th>
-                <th>AMOUNT</th>
-                <th>PAYMENT DATE</th>
-                <th>STATUS</th>
-            </thead>
-            <tbody id="display"></tbody>
-        </table>
+        <div class="heading">
+            <h2>Payment Tracking</h2>
+        </div>
+
+        <div class="table-card">
+            <table id="paymentsTable" border="1">
+                <thead>
+                    <th>ORDER ID</th>
+                    <th>CUSTOMER</th>
+                    <th>AMOUNT</th>
+                    <th>PAYMENT DATE</th>
+                    <th>STATUS</th>
+                </thead>
+                <tbody id="display"></tbody>
+            </table>
+        </div>
+
     </div>
     <script src="../js/storage.js"></script>
     <script src="../js/payment.js"></script>

@@ -1,9 +1,10 @@
 const customers = getCustomers();
+const orders = getOrders();
 console.log(customers.length);
 const nameInput = document.getElementById("name");
 const phoneINput = document.getElementById("phone");
 const emailInput = document.getElementById("email");
-const addCustomerBtn = document.getElementById("addCustomerBtn");
+const addCustomerBtn = document.getElementById("addBtn");
 addCustomerBtn.addEventListener("click", addCustomer);
 
 function addCustomer() {
@@ -66,14 +67,21 @@ function displayCustomers(customersToDisplay = customers) {
          `
 
         const btnCell = document.createElement("td")
+        const divBtn = document.createElement("div");
+        btnCell.appendChild(divBtn);
+
+
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
-        btnCell.appendChild(editBtn);
+        editBtn.id = "editBtnId";
+        divBtn.appendChild(editBtn);
+        divBtn.id = "btnClass";
 
         const deletBtn = document.createElement("button");
         deletBtn.textContent = "Delete";
+        deletBtn.id = "deletBtnId";
         deletBtn.addEventListener('click', () => deletCustomer(customer.id));
-        btnCell.appendChild(deletBtn);
+        divBtn.appendChild(deletBtn);
 
 
         row.appendChild(btnCell);
@@ -89,7 +97,16 @@ function deletCustomer(id) {
     if (index !== -1) {
         customers.splice(index, 1);
 
+        //remove every order belonging to the deleted customer
+        const remainingOrders = orders.filter(order => order.customerId !== id);
+
+        //update the orders array with the remaining orders
+        orders.length = 0;
+        orders.push(...remainingOrders);
+
+        //save the updated customers and orders arrays to localStorage
         localStorage.setItem("customers", JSON.stringify(customers));
+        localStorage.setItem("orders", JSON.stringify(orders));
         displayCustomers();
     }
 }
@@ -107,7 +124,7 @@ function searchCustomer() {
         ||
         customer.email.toLowerCase().includes(searchText)
         ||
-        customer.date.toLowerCase().includes(searchText)
+        customer.dateCreated.toLowerCase().includes(searchText)
     );
 
     displayCustomers(filteredSearch);

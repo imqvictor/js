@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>laundry management system</title>
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/orders.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,18 +31,23 @@
 
     <div class="card">
         <div class="order-nav">
-            <h3>order Management</h3>
-            <input type="search" id="searchOrder" placeholder="searchOrder">
-            <select id="searchCategory">
-                <option value="all">All</option>
-                <option value="pending">Pending</option>
-                <option value="washing">washing</option>
-                <option value="ironing">ironing</option>
-                <option value="drying">Drying</option>
-                <option value="ready">Ready</option>
-                <option value="completed">Completed</option>
-            </select>
-            <div>
+            <div class="search-nav">
+                <h3>order Management</h3>
+                <div> <input type="search" id="searchOrder" placeholder="searchOrder">
+                    <select id="searchCategory">
+                        <option value="all">All</option>
+                        <option value="pending">Pending</option>
+                        <option value="washing">washing</option>
+                        <option value="ironing">ironing</option>
+                        <option value="drying">Drying</option>
+                        <option value="ready">Ready</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="selection-nav">
                 <label for="selectCustomer">customer:</label>
                 <select name="" id="selectCustomer">
                     <option value="">Select Customer</option>
@@ -57,31 +63,31 @@
                 <input type="number" id="Quantity" placeholder="eg;5">
                 <label for="price">Price per item(KES):</label>
                 <input type="number" id="price" placeholder="eg;500.00">
-                <button type="button" id="addOrderBtn">Add Order</button>
+            </div>
+
+            <div class="add-nav">
                 <p>Total price: <span id="totalPrice">0</span></p>
+                <button type="button" id="addBtn">Add Order</button>
             </div>
         </div>
 
-        <div class="inner-card">
-            <div>
-                <table id="ordersTable" border="1">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>CUSTOMERS</th>
-                            <th>QUANTITY</th>
-                            <th>LAUNDRY TYPE</th>
-                            <th>PRICE/ITEM</th>
-                            <th>TOTAL PRICE</th>
-                            <th>ORDER DATE</th>
-                            <th>STATUS</th>
-                            <th>ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody id="displayOrders"> </tbody>
-                </table>
-
-            </div>
+        <div class="table-card">
+            <table id="ordersTable" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>CUSTOMERS</th>
+                        <th>QUANTITY</th>
+                        <th>LAUNDRY TYPE</th>
+                        <th>PRICE/ITEM</th>
+                        <th>TOTAL PRICE</th>
+                        <th>ORDER DATE</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody id="displayOrders"> </tbody>
+            </table>
 
         </div>
 

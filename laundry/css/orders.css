@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --borderCol: #000000;
+    --bgc: #ffffff;
+    --thCol: #ffffff;
+    --thBgc: #000000;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+    padding: 2rem;
+    border: 1px solid var(--borderCol);
+    border-radius: 15px;
+    background-color: var(--bgc);
+}
+
+.search-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.order-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.selection-nav {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+}
+
+.add-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.table-card {
+    margin-top: 20px;
+    border: 1px solid var(--borderCol);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#actionCellId {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
