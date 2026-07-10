@@ -56,10 +56,10 @@ function displayCustomers(customersToDisplay = customers) {
     const displayCustomers = document.getElementById("displayCustomers");
     displayCustomers.innerHTML = "";
 
-    customersToDisplay.forEach(customer => {
+    customersToDisplay.forEach((customer, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td>${customer.id}</td>
+          <td>${index + 1}</td>
           <td>${customer.name}</td> 
           <td>${customer.phone}</td> 
           <td>${customer.email}</td> 

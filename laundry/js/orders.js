@@ -78,6 +78,7 @@ function addOrder() {
 
     const order = {
         id: Date.now(),
+        orderNumber: `#ORD${String(Date.now()).slice(-6)}`,
         customerId: customer.id,
         customerName: customer.name,
         laundryType: selectLaundryType,
@@ -113,10 +114,10 @@ function displayOrders(ordersToDisplay = orders) {
     const displayOrders = document.getElementById("displayOrders");
     displayOrders.innerHTML = "";
 
-    ordersToDisplay.forEach(order => {
+    ordersToDisplay.forEach((order, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${order.customerId}</td> 
+            <td>${index + 1}</td> 
             <td>${order.customerName}</td> 
             <td>${order.quantity}</td>     
             <td>${order.laundryType}</td>     

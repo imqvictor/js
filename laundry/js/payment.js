@@ -10,7 +10,7 @@ function displayPayments() {
         const statusCell = payment.status === "completed" ? "Paid" : "pending";
 
         row.innerHTML = `
-          <td>${payment.customerId}</td>
+          <td>${payment.orderNumber}</td>
           <td>${payment.customerName}</td>
           <td>${payment.totalPrice}</td>
           <td>${payment.dateCreated}</td>
