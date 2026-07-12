@@ -12,7 +12,8 @@
     --navHoov: red;
     --thBgc: #000000;
     --thCol: #ffffff;
-    --delBtnCol: red;
+    --delBtnBgc: rgb(106, 0, 255);
+    --deltBtnCol: red;
 }
 
 body {
@@ -70,15 +71,15 @@ td {
 }
 
 #deletBtnId {
-    background-color: var(--delBtnCol);
-    color: var(--bgc);
+    background-color: var(--delBtnBgc);
+    color: var(--delBtnCol);
     padding: 4px 8px;
     border: none;
     border-radius: 5px;
 }
 
 #addBtn {
-    background-color: var(--delBtnCol);
+    background-color: var(--delBtnBgc);
     color: var(--bgc);
     padding: 4px 8px;
     border: none;
