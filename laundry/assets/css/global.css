@@ -7,13 +7,13 @@
 }
 
 :root {
-    --navBgc: #000000;
+    --navBgc: #de1010;
     --navTxtCol: #ffffff;
     --navHoov: red;
     --thBgc: #000000;
     --thCol: #ffffff;
-    --delBtnBgc: rgb(106, 0, 255);
-    --deltBtnCol: red;
+    --deleteBtnBgc: red;
+    --deleteBtnCol: #fff;
 }
 
 body {
@@ -71,16 +71,16 @@ td {
 }
 
 #deletBtnId {
-    background-color: var(--delBtnBgc);
-    color: var(--delBtnCol);
+    background-color: var(--deleteBtnBgc);
+    color: var(--deleteBtnCol);
     padding: 4px 8px;
     border: none;
     border-radius: 5px;
 }
 
 #addBtn {
-    background-color: var(--delBtnBgc);
-    color: var(--bgc);
+    background-color: var(--deleteBtnBgc);
+    color: var(--deleteBtnCol);
     padding: 4px 8px;
     border: none;
     border-radius: 5px;

@@ -136,7 +136,7 @@ function displayOrders(ordersToDisplay = orders) {
                     <option value="ironing">Ironing</option>
                     <option value="drying">Drying</option>
                     <option value="ready">Ready</option>
-                    <option value="completed">Completed</option>
+                    <option value="collected">Collected</option>
                               `
         actionSelection.value = order.status;
 
