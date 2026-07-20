@@ -22,6 +22,7 @@ async function searchWeather() {
         return false;
     }
 
+
     const url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`;
     const response = await fetch(url);
     const data = await response.json();
@@ -32,6 +33,22 @@ async function searchWeather() {
     const longitude = data.results[0].longitude;
 
     console.log(cityName);
+
+    //recent searches
+    const cities = JSON.parse(localStorage.getItem("cities")) || [];
+    console.log(cities);
+    cities.unshift(cityName);
+    cities.length = 4;
+    localStorage.setItem("cities", JSON.stringify(cities));
+
+    recentElement.innerHTML = "";
+    cities.forEach(element => {
+        const city = document.createElement("p");
+        city.textContent = element;
+
+        recentElement.appendChild(city);
+    });
+
 
     const weatherUrl = `https://api.open-meteo.com/v1/forecast` +
         `?latitude=${latitude}` +
@@ -49,6 +66,15 @@ async function searchWeather() {
     humidityElement.textContent = `Humidity: ${relativeHumidity} %`;
     const windSpeed = weatherData.current.wind_speed_10m;
     windElement.textContent = `Wind: ${windSpeed} km/h`;
+
+    //Description
+    const flTemperature = Math.floor(temperature);
+    console.log(flTemperature);
+    if (flTemperature >= 25) {
+        descriptionElement.textContent = "Description: Hot Sunny Day";
+    } else {
+        descriptionElement.textContent = "Description: Cold Chilly Day";
+    }
 
     loading.textContent = "";
 }
