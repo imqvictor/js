@@ -1,3 +1,6 @@
+const cities = JSON.parse(localStorage.getItem("cities")) || [];
+console.log(cities);
+
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
 const loading = document.getElementById("loading");
@@ -11,12 +14,12 @@ const recentElement = document.getElementById('recent');
 
 searchBtn.addEventListener('click', searchWeather);
 
+
 async function searchWeather() {
 
     loading.textContent = "Loading...";
 
     const city = searchInput.value.trim();
-
     if (city === "") {
         alert("please enetr a city");
         return false;
@@ -34,21 +37,18 @@ async function searchWeather() {
 
     console.log(cityName);
 
-    //recent searches
-    const cities = JSON.parse(localStorage.getItem("cities")) || [];
-    console.log(cities);
+    //recent searches 
+    const existingCityIndex = cities.indexOf(cityName);
+
+    if (existingCityIndex !== -1) {
+        cities.splice(existingCityIndex, 1);
+    }
+
     cities.unshift(cityName);
     cities.length = 4;
     localStorage.setItem("cities", JSON.stringify(cities));
-
-    recentElement.innerHTML = "";
-    cities.forEach(element => {
-        const city = document.createElement("p");
-        city.textContent = element;
-
-        recentElement.appendChild(city);
-    });
-
+    searchInput.value = "";
+    displayCities();
 
     const weatherUrl = `https://api.open-meteo.com/v1/forecast` +
         `?latitude=${latitude}` +
@@ -70,13 +70,61 @@ async function searchWeather() {
     //Description
     const flTemperature = Math.floor(temperature);
     console.log(flTemperature);
-    if (flTemperature >= 25) {
-        descriptionElement.textContent = "Description: Hot Sunny Day";
-    } else {
-        descriptionElement.textContent = "Description: Cold Chilly Day";
+
+    const clouds = [
+        {
+            image: "../assets/calm.jpg",
+            description: "The day is calm"
+        },
+        {
+            image: "../assets/cloudy.jpg",
+            description: "Today it's cloudy"
+        },
+        {
+            image: "../assets/rainy.jpg",
+            description: "Raining cats and dogs"
+        },
+        {
+            image: "../assets/sunny.jpg",
+            description: "The Sun is here, enjoy Vitamin D"
+        },
+        {
+            image: "../assets/windy.jpg",
+            description: "Let's catch some wind"
+        },
+    ];
+
+    console.log(clouds[0].image);
+
+    function bodyColor() {
+
+        clouds.forEach = (element) => {
+            if (flTemperature < 10) {
+                document.body.style.backgroundImage = url(`${element.image}`);
+                descriptionElement.textContent = element.description;
+            }
+        }
+
     }
+
 
     loading.textContent = "";
 }
 
 
+function displayCities() {
+
+    recentElement.innerHTML = "";
+    cities.forEach(element => {
+        const city = document.createElement("p");
+        city.textContent = element;
+
+        city.addEventListener('click', () => {
+            searchInput.value = element;
+            searchWeather();
+        })
+
+        recentElement.appendChild(city);
+    });
+}
+displayCities();
