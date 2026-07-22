@@ -13,10 +13,15 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 4rem;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .card {
     width: 400px;
+    height: fit-content;
     padding: 2rem;
     background-color: var(--primary);
     display: flex;

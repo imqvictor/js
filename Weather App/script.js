@@ -59,54 +59,74 @@ async function searchWeather() {
     const weatherData = await weatherResponse.json();
 
     const temperature = weatherData.current.temperature_2m;
-    temperatureElement.textContent = `${temperature}°C`;
     const apparentTemperature = weatherData.current.apparent_temperature;
-    feelsElement.textContent = `Feels Like: ${apparentTemperature}°C`;
     const relativeHumidity = weatherData.current.relative_humidity_2m;
-    humidityElement.textContent = `Humidity: ${relativeHumidity} %`;
     const windSpeed = weatherData.current.wind_speed_10m;
-    windElement.textContent = `Wind: ${windSpeed} km/h`;
+
 
     //Description
     const flTemperature = Math.floor(temperature);
     console.log(flTemperature);
+    temperatureElement.textContent = `${flTemperature}°C`;
+    const flRelativeHumidity = Math.floor(relativeHumidity);
+    humidityElement.textContent = `Humidity: ${flRelativeHumidity} %`;
+    const flApparentTemperature = Math.floor(apparentTemperature);
+    feelsElement.textContent = `Feels Like: ${flApparentTemperature}°C`;
+    const flWindSpeed = Math.floor(windSpeed);
+    windElement.textContent = `Wind: ${flWindSpeed} km/h`;
+
 
     const clouds = [
         {
-            image: "../assets/calm.jpg",
+            image: "assets/calm.jpg",
             description: "The day is calm"
         },
         {
-            image: "../assets/cloudy.jpg",
+            image: "assets/cloudy.jpg",
             description: "Today it's cloudy"
         },
         {
-            image: "../assets/rainy.jpg",
+            image: "assets/rainy.jpg",
             description: "Raining cats and dogs"
         },
         {
-            image: "../assets/sunny.jpg",
+            image: "assets/sunny.jpg",
             description: "The Sun is here, enjoy Vitamin D"
         },
         {
-            image: "../assets/windy.jpg",
+            image: "assets/windy.jpg",
             description: "Let's catch some wind"
         },
     ];
 
     console.log(clouds[0].image);
 
-    function bodyColor() {
+    function backGroundImage() {
 
-        clouds.forEach = (element) => {
-            if (flTemperature < 10) {
-                document.body.style.backgroundImage = url(`${element.image}`);
-                descriptionElement.textContent = element.description;
-            }
+        if (flTemperature <= 17) {
+            document.body.style.backgroundImage = `url("${clouds[2].image}")`;
+            descriptionElement.textContent = `${clouds[2].description}`;
+        }
+        if (flTemperature >= 18 && flTemperature <= 21) {
+            document.body.style.backgroundImage = `url("${clouds[1].image}")`;
+            descriptionElement.textContent = `${clouds[1].description}`;
+        }
+        if (flTemperature > 21 && flTemperature <= 25) {
+            document.body.style.backgroundImage = `url("${clouds[0].image}")`;
+            descriptionElement.textContent = `${clouds[0].description}`;
+        }
+        if (flTemperature > 25) {
+            document.body.style.backgroundImage = `url("${clouds[3].image}")`;
+            descriptionElement.textContent = `${clouds[3].description}`;
+        }
+        if (flTemperature <= 17 && windSpeed > 10) {
+            document.body.style.backgroundImage = `url("${clouds[4].image}")`;
+            descriptionElement.textContent = `${clouds[4].description}`;
         }
 
     }
 
+    backGroundImage();
 
     loading.textContent = "";
 }
