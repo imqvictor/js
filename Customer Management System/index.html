@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management System</title>
+</head>
+
+<body>
+    <div class="card">
+        <h3>Customer Management</h3>
+        <form>
+            <input type="text" id="name" placeholder="Enter Name">
+            <input type="number" id="phone" placeholder="Enter Phone">
+            <input type="email" id="email" placeholder="Enter Email">
+            <button type="button" id="addCustomerBtn">Add Customer</button>
+        </form>
+
+        <h4>search</h4>
+        <input type="search" id="search" placeholder="search customer"> <br><br>
+
+        <table class="table" border="1px">
+            <thead>
+                <th>NO</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </thead>
+            <tbody id="displayCustomers"></tbody>
+        </table>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
