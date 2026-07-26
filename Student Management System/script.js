@@ -1,6 +1,7 @@
 const students = JSON.parse(localStorage.getItem("students")) || [];
 
 
+
 let nameInput = document.getElementById('name');
 let ageInput = document.getElementById('age');
 let marksInput = document.getElementById('mks');
@@ -8,9 +9,12 @@ const f4m = document.getElementById('fm1');
 const nameLable = document.getElementById('nlble');
 const ageLable = document.getElementById('alble');
 const markLable = document.getElementById('mlble');
+const addStudentBtn = document.getElementById('addStudentBtn');
+addStudentBtn.addEventListener('click', addStudent);
 
+let studentId = null;
 
-function addStudent(id, name, age, marks) {
+function addStudent() {
     let sName = nameInput.value.trim();
     if (sName === "") {
         txtnError.textContent = "Name must be filled out";
@@ -37,14 +41,34 @@ function addStudent(id, name, age, marks) {
 
 
     const newStudent = {
-        id: students.length + 1,
+        id: Date.now(),
         name: sName,
         age: sAge,
         marks: rawMarks
     };
-    students.push(newStudent);
+
+    if (studentId === null) {
+        students.push(newStudent);
+    } else if (studentId !== null) {
+        const student = students.find(student => student.id === studentId);
+        if (student) {
+            student.name = sName;
+            student.age = sAge;
+            student.marks = rawMarks;
+
+        }
+
+        studentId = null;
+
+        addStudentBtn.textContent = "Add Student";
+    }
 
     localStorage.setItem("students", JSON.stringify(students));
+    nameInput.value = "";
+    ageInput.value = "";
+    marksInput.value = "";
+
+    displayStudents();
 }
 
 
@@ -66,23 +90,41 @@ f4m.appendChild(mError);
 
 
 function displayStudents() {
-    const studentList = document.getElementById('studentList');
-    studentList.innerHTML = '';
+    const display = document.getElementById('display');
+    display.innerHTML = '';
 
-    students.forEach(student => {
-        const studentItem = document.createElement('li');
-        studentItem.textContent = `Name: ${student.name}, Age: ${student.age}, ID: ${student.id},
-        Marks:${student.marks}` + " ";
-
+    students.forEach((student, index) => {
+        const average = getAverage(student.marks);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+           <td>${index + 1}</td>
+           <td>${student.name}</td>
+           <td>${student.age}</td>
+           <td>${student.marks}</td>
+           <td>${average}</td>
+        `
+        const editBtn = document.createElement('button');
+        editBtn.textContent = "EDIT";
+        editBtn.id = "editBtn";
+        editBtn.addEventListener('click', () => editStudent(student.id));
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.onclick = () => deleteStudent(student.id);
+        deleteButton.textContent = "DELETE";
+        deleteButton.id = 'deleteButton';
+        deleteButton.addEventListener('click', () => deleteStudent(student.id));
 
-        studentItem.appendChild(deleteButton);
-        studentList.appendChild(studentItem);
+        const buttonCell = document.createElement('span');
+        buttonCell.id = "buttonSpan";
+        buttonCell.appendChild(editBtn);
+        buttonCell.appendChild(deleteButton);
+
+
+        row.appendChild(buttonCell);
+        display.appendChild(row);
+
     });
 }
 
+displayStudents();
 
 function getAverage(marks) {
 
@@ -97,20 +139,6 @@ function getAverage(marks) {
     return total / marks.length;
 }
 
-function studentsAverage() {
-    const pel = document.getElementById('pele');
-
-    students.forEach(student => {
-        const average = getAverage(student.marks);
-        const p = document.createElement('p');
-
-        p.innerHTML = `${student.name} -Average:${average}`
-
-        pel.appendChild(p);
-    });
-
-}
-
 
 function deleteStudent(id) {
     const index = students.findIndex(student => student.id === id);
@@ -120,8 +148,23 @@ function deleteStudent(id) {
         localStorage.setItem("students", JSON.stringify(students));
 
         displayStudents();
-        studentsAverage();
+
     }
 }
+
+
+function editStudent(id) {
+    const student = students.find(student => student.id === id);
+
+    if (!student) return;
+
+    nameInput.value = student.name;
+    ageInput.value = student.age;
+    marksInput.value = student.marks;
+
+    studentId = student.id;
+    addStudentBtn.textContent = "Update Student";
+}
+
 
 

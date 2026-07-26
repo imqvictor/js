@@ -8,13 +8,6 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li> <a href="home.html">Home</a> </li>
-            <li> <a href="students.html">Students</a> </li>
-            <li> <a href="about.html">About</a> </li>
-        </ul>
-    </nav>
 
     <head>
         <h1>Student Management System</h1>
@@ -24,18 +17,31 @@
     <div class="about-card">
         <form id="fm1">
             <label for="name" id="nlble">Name:</label>
-            <input type="text" name="name" id="name"><br><br>
+            <input type="text" name="name" id="name">
             <label for="age" id="alble">Age:</label>
-            <input type="number" name="age" id="age"><br><br>
+            <input type="number" name="age" id="age">
             <label for="mks" id="mlble">Marks</label>
-            <input type="text" name="mks" id="mks"><br>
+            <input type="text" name="mks" id="mks">
         </form><br>
 
-        <button type="button" onclick="addStudent()">Add Student</button>
+        <button type="button" id="addStudentBtn">Add Student</button>
 
+        <table id="table" border="1px">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NAME</th>
+                    <th>AGE</th>
+                    <th>MARKS</th>
+                    <th>AVERAGE</th>
+                    <th>ACTIONS</th>
+                </tr>
+
+            </thead>
+            <tbody id="display"></tbody>
+        </table>
 
     </div>
-
     <script src="script.js"></script>
 </body>
 
