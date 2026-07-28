@@ -83,6 +83,7 @@ function displayCustomers(toDisplay = customers) {
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
         editBtn.id = "editBtnbtn";
+        editBtn.setAttribute("popovertarget", "section")
         editBtn.addEventListener('click', () => editCustomers(customer.id));
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
@@ -90,6 +91,7 @@ function displayCustomers(toDisplay = customers) {
         deleteBtn.addEventListener('click', () => deleteCustomer(customer.id));
 
         const actionsCell = document.createElement("td");
+        actionsCell.id = "actionsCell";
         actionsCell.appendChild(editBtn);
         actionsCell.appendChild(deleteBtn);
 

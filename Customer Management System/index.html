@@ -9,17 +9,27 @@
 </head>
 
 <body>
-    <div class="card">
+    <div id="searchDiv">
         <h3>Customer Management</h3>
-        <form>
-            <input type="text" id="name" placeholder="Enter Name">
-            <input type="number" id="phone" placeholder="Enter Phone">
-            <input type="email" id="email" placeholder="Enter Email">
-            <button type="button" id="addCustomerBtn">Add Customer</button>
-        </form>
-
-        <h4>search</h4>
+        <h4>search:</h4>
         <input type="search" id="search" placeholder="search customer"> <br><br>
+        <button type="button" id="addBtn" popovertarget="section">Add Customer</button>
+    </div>
+    <div class="card">
+
+        <section id="section" popover="manual">
+            <form id="fm1">
+                <input type="text" id="name" placeholder="Enter Name">
+                <input type="number" id="phone" placeholder="Enter Phone">
+                <input type="email" id="email" placeholder="Enter Email">
+
+                <div>
+                    <button type="button" popovertarget="section" popovertargetaction="hide">Close</button>
+                    <button type="button" id="addCustomerBtn">Add Customer</button>
+                </div>
+        </section>
+
+        </form>
 
         <table class="table" border="1px">
             <thead>
