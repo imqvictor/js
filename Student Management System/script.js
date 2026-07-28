@@ -106,6 +106,7 @@ function displayStudents() {
         const editBtn = document.createElement('button');
         editBtn.textContent = "EDIT";
         editBtn.id = "editBtn";
+        editBtn.setAttribute("popovertarget", "section");
         editBtn.addEventListener('click', () => editStudent(student.id));
         const deleteButton = document.createElement('button');
         deleteButton.textContent = "DELETE";
@@ -113,10 +114,9 @@ function displayStudents() {
         deleteButton.addEventListener('click', () => deleteStudent(student.id));
 
         const buttonCell = document.createElement('span');
-        buttonCell.id = "buttonSpan";
+        buttonCell.id = "buttonCell";
         buttonCell.appendChild(editBtn);
         buttonCell.appendChild(deleteButton);
-
 
         row.appendChild(buttonCell);
         display.appendChild(row);

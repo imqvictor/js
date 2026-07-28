@@ -5,26 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+        integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 
-    <head>
-        <h1>Student Management System</h1>
-        <p>Welcome to the Student Management System. Please select an option below:</p>
-    </head>
+    <div class="card">
 
-    <div class="about-card">
-        <form id="fm1">
-            <label for="name" id="nlble">Name:</label>
-            <input type="text" name="name" id="name">
-            <label for="age" id="alble">Age:</label>
-            <input type="number" name="age" id="age">
-            <label for="mks" id="mlble">Marks</label>
-            <input type="text" name="mks" id="mks">
-        </form><br>
+        <div id="head">
+            <h1>Student Management System</h1>
+            <p>Welcome to the Student Management System. Please select an option below:</p>
+            <button type="button" id="addBtn" popovertarget="section">Add Student</button>
+        </div>
 
-        <button type="button" id="addStudentBtn">Add Student</button>
+        <section id="section" popover="manual">
+            <form id="fm1">
+                <input type="text" name="name" id="name" placeholder="Enter Name">
+                <input type="number" name="age" id="age" placeholder="Enter Age">
+                <input type="text" name="mks" id="mks" placeholder="Enter Marks">
+                <div id="buttons">
+                    <button type="button" popovertarget="section" popovertagetaction="hide">close</button>
+                    <button type="button" id="addStudentBtn">Add Student</button>
+                </div>
+
+            </form>
+        </section>
+
 
         <table id="table" border="1px">
             <thead>
@@ -42,6 +51,7 @@
         </table>
 
     </div>
+
     <script src="script.js"></script>
 </body>
 
