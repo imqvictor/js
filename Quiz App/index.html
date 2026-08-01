@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz App</title>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="start-screen">
+            <h2>Quizz App</h2>
+            <label for="">Enter Your Name </label>
+            <input type="text" id="nameInput">
+            <select name="selectCategory" id="selectCategory">
+                <option value="">Choose Quiz Category</option>
+                <option value="general">General Knowledge</option>
+                <option value="sports">Sports</option>
+                <option value="cities">Cities</option>
+                <option value="science">Science</option>
+            </select>
+            <br><br>
+            <select name="selectDifficulty" id="selectDifficulty">
+                <option value="">Difficulty</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+
+            <select name="selectNumber" id="selectNumber">
+                <option value="">Number of Questions</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+            <br><br>
+            <button id="startBtn">Start Quiz</button>
+
+        </div>
+        <div class="quiz-screen" hidden>
+            <p id="questionCounter"></p>
+
+            <p id="question"></p>
+            <form id="fm1"></form>
+
+            <p id="time"></p>
+            <button id="nextQuiz">Next</button>
+        </div>
+
+        <div class="result-screen" hidden>
+            <p id="quizFinished">Quiz Finished</p>
+            <p id="name">Name: John</p>
+            <p>Score: <br> <span id="score">8/10</span></p>
+            <p>Percentage: <br> <span id="percentage"> 80%</span></p>
+            <p>Performance: <br> <span id="performance"> Excellent </span></p>
+            <button id="playagain">Play again</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
