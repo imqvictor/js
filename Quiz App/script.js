@@ -92,6 +92,7 @@ let playerScore = 0;
 
 function displayQuestions() {
     nextQuiz.disabled = false;
+
     const current = questions[currentQuestionIndex];
 
     question.textContent = current.question;
@@ -119,9 +120,10 @@ function displayQuestions() {
 }
 
 
-nextQuiz.addEventListener('click', nextQuestion);
+nextQuiz.addEventListener('click', () => nextQuestion());
 
 function nextQuestion(timeExpired = false) {
+
 
     const selectedOption = document.querySelector('input[name=quizOptions]:checked');
 
@@ -156,7 +158,18 @@ function nextQuestion(timeExpired = false) {
         percentageElement.textContent = `${percentageNum}%`;
 
         //perfomance
+        let performanceText;
+        if (percentageNum < 40) {
+            performanceText = "Try again";
+        } else if (percentageNum >= 40 && percentageNum < 60) {
+            performanceText = "Fair";
+        } else if (percentageNum >= 60 && percentageNum < 80) {
+            performanceText = "Good";
+        } else if (percentageNum >= 80) {
+            performanceText = "Excellent";
+        }
 
+        performance.textContent = performanceText;
 
         const player = {
             name: currentPlayerName,
@@ -188,7 +201,7 @@ function startTimer() {
     clearInterval(timer);
 
     timeLeft = 20;
-    time.textContent = `${timeLeft}s`;
+    time.textContent = `Time Left: ${timeLeft}s`;
 
     timer = setInterval(() => {
         timeLeft--;
