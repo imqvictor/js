@@ -8,6 +8,7 @@ const popOver = document.createElement('div');
 popOver.id = 'pop';
 popOver.setAttribute('popover', 'auto');
 document.body.append(popOver);
+
 searchBtn.addEventListener('click', searchRecipe);
 
 async function searchRecipe() {

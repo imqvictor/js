@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Currency Converter</h2>
+
+        <div class="card1">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount">
+        </div>
+        <br>
+        <div class="card2">
+            <label for="from">From:</label>
+            <select name="from" id="from">
+                <option value="">Select a Currency</option>
+                <option value="KES">KES</option>
+                <option value="TZS">TZS</option>
+                <option value="UGX">UGX</option>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+            </select>
+            <br><br>
+            <label for="to">To:</label>
+            <select name="to" id="to">
+                <option value="">Select a Currency</option>
+                <option value="KES">KES</option>
+                <option value="TZS">TZS</option>
+                <option value="UGX">UGX</option>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+            </select>
+        </div>
+        <br>
+        <button type="button" id="convertBtn">convert</button>
+
+        <p id="display"></p>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
