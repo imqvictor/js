@@ -3,10 +3,17 @@ const notes = JSON.parse(localStorage.getItem('note')) || [];
 
 const noteContainer = document.querySelector('.noteContainer');
 const addNoteBtn = document.getElementById('addNoteBtn');
+const displayDiv = document.querySelector('.displayDiv');
 
-addNoteBtn.addEventListener('click', createNotes);
+addNoteBtn.addEventListener('click', () => {
+
+    displayDiv.hidden = true;
+    noteContainer.hidden = false;
+    createNotes();
+});
 
 function createNotes() {
+    noteContainer.innerHTML = "";
 
     const noteDiv = document.createElement('div');
     noteDiv.id = 'noteDiv';
@@ -27,8 +34,6 @@ function createNotes() {
 
     noteContainer.appendChild(noteDiv);
 
-    noteContainer.hidden = true;
-
     saveBtn.addEventListener('click', () => saveNote(textArea.value));
 
 }
@@ -47,21 +52,58 @@ function saveNote(note) {
     console.log(notes[0].note);
     console.log(notes[0].date);
 
-    noteContainer.hidden = false;
-
+    displayDiv.hidden = false;
+    noteContainer.hidden = true;
+    displayNotes();
 }
 
 function displayNotes() {
+    displayDiv.innerHTML = "";
+
     notes.forEach(note => {
         const noteElement = document.createElement('div');
-        noteElement.setAttribute('contenteditable', 'true');
+        noteElement.dataset.id = note.id;
+
         noteElement.innerHTML = `
             <p>${note.date}</p>
-            <p>${note.note}</p>
+            <p class="noteText" contenteditable="true">${note.note}</p>
             `
 
-        noteContainer.appendChild(noteElement);
+        const noteText = noteElement.querySelector('.noteText');
+
+        noteText.addEventListener('blur', () => {
+            const editedNote = noteElement.querySelector('.noteText').textContent;
+            upDateNote(note.id, editedNote);
+        });
+
+        const deleteNoteBtn = document.createElement('button');
+        deleteNoteBtn.textContent = "DELETE";
+        deleteNoteBtn.addEventListener('click', () => deleteNote(note.id));
+
+        noteElement.appendChild(deleteNoteBtn);
+        displayDiv.appendChild(noteElement);
     });
 }
 
 displayNotes();
+
+function upDateNote(id, newText) {
+    const note = notes.find(note => note.id === id);
+
+    if (note) {
+        note.note = newText;
+        localStorage.setItem('note', JSON.stringify(notes));
+    }
+}
+
+function deleteNote(id) {
+    const noteIndex = notes.findIndex(note => note.id === id);
+
+    if (noteIndex !== -1) {
+        notes.splice(noteIndex, 1);
+
+        localStorage.setItem('note', JSON.stringify(notes));
+        displayNotes();
+    }
+    console.log(notes.length);
+}
