@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+        integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -19,15 +23,39 @@
             </ul>
         </nav>
 
-        <div class="products">
+        <div class="lower-nav">
+            <div>
+                <input type="search" placeholder="Search for products" id="search">
+                <select id="select">
+                    <option value="" selected>Select By Category</option>
+                    <option value="all">All</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="fragrances">Fragrance</option>
+                    <option value="groceries">Grocerie</option>
+                </select>
+            </div>
+
+            <div>
+                <button type="button" id="cartBtn">GO TO CART</button>
+            </div>
 
         </div>
+
+        <div class="body-card">
+
+            <div class="products">
+            </div>
+            <div class="cart">
+            </div>
+        </div>
+
 
         <footer>
             <address>
                 <p>Location: Nairobi Kenya</p>
                 <p>Contact: 0741832524</p>
-                <p> Email:<a href="maito:imavictor9@gmail.com"> imavictor9@gmail.com</a> </p>
+                <p> Email:<a href="mailto:imavictor9@gmail.com"> imavictor9@gmail.com</a> </p>
                 <div class="icons">
                     <p>Socials: </p>
                     <div><i class="fa-brands fa-instagram"></i></div>
