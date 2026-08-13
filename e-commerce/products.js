@@ -148,8 +148,8 @@ function displayCartItems() {
         <img src="${item.images[0]}" width="200" height="200" alt="${item.title}">
         <p>${item.title}</p>
         <p>Price: $${item.price.toFixed(2)}</p>
-        <p>${item.quantity}</p>
-        <p>${totalPrice}</p>
+        <p>+${item.quantity}</p>
+        <p>$${totalPrice}</p>
         `
 
         const add = document.createElement('button');
