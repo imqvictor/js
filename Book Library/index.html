@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Book Library</h2>
+
+        <div class="inputs">
+
+            <section id="section" popover="manual">
+                <form id="frm1">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title">
+                    <p id="titleMessage"></p>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author">
+                    <p id="authorMessage"></p>
+                    <label for="year">Year:</label>
+                    <input type="number" id="year">
+                    <p id="yearMessage"></p>
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="genre">
+                    <p id="genreMesssage"></p>
+                    <button type="button" id="addbookBtn">Add Book</button>
+                    <button type="button" id="Cancel" popovertarget="section" popovertargetaction="hide">Cancel</button>
+                </form>
+            </section>
+
+
+            <div class="search-nav">
+                <input type="search" id="search" placeholder="search a book">
+                <button type="button" popovertarget="section">Add Book</button>
+            </div>
+
+        </div>
+
+        <div class="display"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
