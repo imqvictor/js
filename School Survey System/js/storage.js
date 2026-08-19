@@ -8,3 +8,7 @@ function getCurrentUser() {
 function getCurrentAdmin() {
     return JSON.parse(localStorage.getItem('cAdmin'));
 }
+
+function getQuestionnaire() {
+    return JSON.parse(localStorage.getItem('questionnaire')) || [];
+}

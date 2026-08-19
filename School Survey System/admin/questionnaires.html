@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaires</title>
+</head>
+
+<body>
+    <div class="card">
+        <nav>
+            <ul>
+                <li><a href="adminDashboard.html">Dashboard</a></li>
+                <li><a href="questionnaires.html">Questionnaires</a></li>
+                <li><a href="responses.html">Responses</a></li>
+            </ul>
+        </nav>
+
+        <form id="form">
+            <label for="questionnaire">Questionnaire Title:</label>
+            <input type="text" id="questionnaireTitle" required><br><br>
+            <label for="description">Questionnaire Description:</label>
+            <input type="text" id="description" placeholder="Enter a question description" required><br><br>
+            <label for="question">Question:</label>
+            <textarea id="question" placeholder="Enter the question" required></textarea><br><br>
+            <label for="type">Question Type:</label>
+            <select id="type" required>
+                <option value="">Choice Type</option>
+                <option value="short-text">Short Text</option>
+                <option value="long-text">Long Text</option>
+                <option value="multiple-choice">Multiple Choice</option>
+                <option value="yes/no">YES/NO</option>
+            </select><br><br>
+            <button type="submit" id="createQuestionnaire">Add Questionnaire</button><br><br>
+        </form>
+
+        <div class="displayQuestionnaire"></div>
+
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/questionnaires.js"></script>
+</body>
+
+</html>
