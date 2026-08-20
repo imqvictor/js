@@ -26,12 +26,19 @@
             <textarea id="question" placeholder="Enter the question" required></textarea><br><br>
             <label for="type">Question Type:</label>
             <select id="type" required>
-                <option value="">Choice Type</option>
-                <option value="short-text">Short Text</option>
-                <option value="long-text">Long Text</option>
-                <option value="multiple-choice">Multiple Choice</option>
+                <option value="">Choose</option>
+                <option value="short-text">Short Answer</option>
+                <option value="number">Number</option>
                 <option value="yes/no">YES/NO</option>
+                <option value="multiple-choice">Multiple Choice</option>
             </select><br><br>
+            <div class="choices" hidden="true">
+                <input type="text" id="choicesInput" placeholder="enter choice">
+                <button type="button" id="addChoiceBtn">Add Choice</button><br><br>
+                <label for="displayChoices">Current Choices:</label>
+                <div id="displayChoices"></div>
+            </div>
+
             <button type="submit" id="createQuestionnaire">Add Questionnaire</button><br><br>
         </form>
 

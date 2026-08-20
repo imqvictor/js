@@ -7,6 +7,8 @@ const descriptionInput = document.getElementById('description');
 const questionInput = document.getElementById('question');
 const typeInput = document.getElementById('type');
 const createQuestionnaire = document.getElementById('createQuestionnaire');
+const currentChoice = [];
+const displayChoices = document.getElementById('displayChoices');
 
 
 let currentQuestionnaireId = null;
@@ -28,8 +30,11 @@ function addQuestion() {
     const question = {
         id: Date.now(),
         question: questionEntered,
-        type: type
+        type: type,
+        choices: []
     }
+    question.choices = [...currentChoice];
+
 
     //creating a new questionnaire
     if (currentQuestionnaireId === null) {
@@ -56,6 +61,7 @@ function addQuestion() {
         }
     }
 
+
     localStorage.setItem('questionnaire', JSON.stringify(questionnaires));
 
     displayQuestionnaires();
@@ -64,6 +70,8 @@ function addQuestion() {
     descriptionInput.value = "";
     questionInput.value = "";
     typeInput.value = "";
+    currentChoice.length = 0;
+    displayChoices.innerHTML = "";
 }
 
 function displayQuestionnaires() {
@@ -75,11 +83,11 @@ function displayQuestionnaires() {
         <p>Questionnaire Title:${questionnaired.questionnaire}</p>
         <p>Description:${questionnaired.description}</p>
         `
-        questionnaired.questions.forEach(question => {
+        questionnaired.questions.forEach((question, index) => {
             const questionDiv = document.createElement('div');
             questionDiv.innerHTML = `
-            <p>${questionnaired.questions.length}. Question:${question.question}</p>
-            <p>Type: ${question.type}</p>
+            <p>${index + 1}. Question:${question.question}</p>
+            <p>${question.choices}</p>
             `
             questionnaireDiv.appendChild(questionDiv);
 
@@ -113,5 +121,68 @@ function displayQuestionnaires() {
         displayQuestionnaire.appendChild(questionnaireDiv);
 
     });
+
+
 }
 displayQuestionnaires();
+
+const choices = document.querySelector('.choices');
+typeInput.addEventListener('change', () => {
+    if (typeInput.value === "multiple-choice") {
+        choices.style.display = "block";
+    } else {
+        choices.style.display = "none";
+    }
+
+    if (typeInput.value === "yes/no") {
+        yesNo = ["Yes", "No"];
+        console.log(yesNo);
+    }
+
+    if (typeInput.value === "number") {
+
+    }
+    if (typeInput.value === "short-text") {
+
+    }
+
+});
+
+
+
+
+const choicesInput = document.getElementById('choicesInput');
+const addChoiceBtn = document.getElementById('addChoiceBtn');
+addChoiceBtn.addEventListener('click', () => {
+    const choice = choicesInput.value.trim();
+    if (choice === "") {
+        alert("please enter choice");
+        return;
+    }
+
+    currentChoice.push(choice);
+
+    console.log('choices button clicked');
+    console.log(currentChoice.length);
+
+    displayChoices.innerHTML = "";
+
+    currentChoice.forEach(choice => {
+        const choiceDiv = document.createElement('div');
+        choiceDiv.innerHTML = `
+        <label>${choice}</label>
+       `
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "remove";
+
+        choiceDiv.appendChild(removeBtn);
+        displayChoices.appendChild(choiceDiv);
+
+        choicesInput.value = "";
+
+
+    });
+
+});
+
+console.log(questionnaires);
