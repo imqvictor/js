@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle</title>
+</head>
+
+<body>
+
+    <div class="card">
+        <p>Hello</p>
+    </div>
+
+    <script>
+
+        const card = document.querySelector('.card');
+        //set the state
+        let isOpen = false;
+
+        const Open = document.createElement('button');
+        Open.textContent = "OPEN";
+        Open.addEventListener("click", () => {
+            if (!isOpen) {
+
+                //change the state
+                /*this changes the state because the condition checkd if isOpen is not true which is true; 
+                then the if block is excuted, upon execution the variable is changed to true to mean the 
+                if condition is no longer true after the first click
+                 */
+
+                isOpen = true;
+
+                card.innerHTML = "<p>World<p>";
+                Open.textContent = "CLOSE";
+                card.appendChild(Open);
+
+            } else {
+                /*
+                The else is executed on the second click if the condition is not true,
+                since isOpen is se to true the condition is nolonger true, because it checks !true(!isOpen)
+                This the leads to execution of the else statement which now rests the variable again to false
+                making the first condition to be true thus loop continues
+                */
+                isOpen = false;
+
+                card.innerHTML = "";
+                card.innerHTML = "<p>Hello</p>";
+                Open.textContent = "OPEN";
+                card.appendChild(Open);
+            }
+
+        });
+
+        card.appendChild(Open);
+
+    </script>
+</body>
+
+</html>

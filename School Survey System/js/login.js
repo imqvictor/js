@@ -66,7 +66,7 @@ form.addEventListener('submit', (event) => {
             const { password, ...currentUser } = foundUser;
             localStorage.setItem('cUser', JSON.stringify(currentUser));
             //navigate to the users dashboard
-            window.location.href = "user/userDashboard.html";
+            window.location.href = "enumerators/officersDashboard.html";
         }
     } else {
         umessage.textContent = "incorrect username or password";

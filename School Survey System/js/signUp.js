@@ -50,3 +50,5 @@ function addUsers() {
     }
 
 }
+
+console.log(users);

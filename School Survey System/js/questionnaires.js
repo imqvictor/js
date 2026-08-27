@@ -25,6 +25,15 @@ function addQuestion() {
     const questionEntered = questionInput.value.trim();
     const type = typeInput.value.trim();
 
+    if (questionEntered === "") {
+        alert("Please enter a question");
+        return;
+    }
+
+    if (type === "") {
+        alert("Please select a question type");
+        return;
+    }
 
 
     const question = {
@@ -33,7 +42,24 @@ function addQuestion() {
         type: type,
         choices: []
     }
-    question.choices = [...currentChoice];
+
+    // Multiple choice gets the choices entered by admin
+    if (type === "multiple-choice") {
+
+        if (currentChoice.length < 2) {
+            alert("Please add at least two choices");
+            return;
+        }
+
+        question.choices = [...currentChoice];
+    }
+
+
+    // Yes/No automatically gets these choices
+    if (type === "yes/no") {
+        question.choices = ["Yes", "No"];
+    }
+
 
 
     //creating a new questionnaire
@@ -56,9 +82,11 @@ function addQuestion() {
         if (existingQuestionnaire) {
             existingQuestionnaire.questions.push(question);
 
-            //rest the questionnare Id
+            //reset the questionnare Id
             currentQuestionnaireId = null;
         }
+
+        console.log(questionnaires);
     }
 
 
@@ -66,12 +94,15 @@ function addQuestion() {
 
     displayQuestionnaires();
 
+    // Reset form 
     questionnaireTitleInput.value = "";
     descriptionInput.value = "";
     questionInput.value = "";
     typeInput.value = "";
     currentChoice.length = 0;
     displayChoices.innerHTML = "";
+    createQuestionnaire.textContent = "Add Questionnaire";
+    choices.style.display = "none";
 }
 
 function displayQuestionnaires() {
@@ -87,7 +118,7 @@ function displayQuestionnaires() {
             const questionDiv = document.createElement('div');
             questionDiv.innerHTML = `
             <p>${index + 1}. Question:${question.question}</p>
-            <p>${question.choices}</p>
+            <p>${question.choices.join('<br>')}</p>
             `
             questionnaireDiv.appendChild(questionDiv);
 
@@ -133,22 +164,7 @@ typeInput.addEventListener('change', () => {
     } else {
         choices.style.display = "none";
     }
-
-    if (typeInput.value === "yes/no") {
-        yesNo = ["Yes", "No"];
-        console.log(yesNo);
-    }
-
-    if (typeInput.value === "number") {
-
-    }
-    if (typeInput.value === "short-text") {
-
-    }
-
 });
-
-
 
 
 const choicesInput = document.getElementById('choicesInput');
@@ -162,27 +178,38 @@ addChoiceBtn.addEventListener('click', () => {
 
     currentChoice.push(choice);
 
-    console.log('choices button clicked');
-    console.log(currentChoice.length);
-
-    displayChoices.innerHTML = "";
-
-    currentChoice.forEach(choice => {
-        const choiceDiv = document.createElement('div');
-        choiceDiv.innerHTML = `
-        <label>${choice}</label>
-       `
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = "remove";
-
-        choiceDiv.appendChild(removeBtn);
-        displayChoices.appendChild(choiceDiv);
-
-        choicesInput.value = "";
-
-
-    });
+    choicesInput.value = "";
+    choicesDisplay();
 
 });
 
+
 console.log(questionnaires);
+
+
+function choicesDisplay() {
+    displayChoices.innerHTML = "";
+
+    currentChoice.forEach((choice, index) => {
+
+        const choiceDiv = document.createElement('div');
+
+        const label = document.createElement('label');
+        label.textContent = choice;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "Remove";
+        removeBtn.type = "button";
+
+        removeBtn.addEventListener('click', () => {
+            currentChoice.splice(index, 1);
+
+            choicesDisplay();
+        });
+
+        choiceDiv.appendChild(label);
+        choiceDiv.appendChild(removeBtn);
+
+        displayChoices.appendChild(choiceDiv);
+    });
+}
