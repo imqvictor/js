@@ -105,24 +105,38 @@ function addQuestion() {
     choices.style.display = "none";
 }
 
+
 function displayQuestionnaires() {
+
     displayQuestionnaire.innerHTML = "";
 
     questionnaires.forEach(questionnaired => {
+        //declear false isOpen
+        let isOpen = false;
+
+        const openBtn = document.createElement('button');
+        openBtn.textContent = "Open Questionnaire";
+
+
+        const title = document.createElement('h2');
+        title.textContent = questionnaired.questionnaire;
+
+
         const questionnaireDiv = document.createElement('div');
-        questionnaireDiv.innerHTML = ` 
-        <p>Questionnaire Title:${questionnaired.questionnaire}</p>
-        <p>Description:${questionnaired.description}</p>
+        questionnaireDiv.innerHTML = `
+            <p> Questionnaire Title:${questionnaired.questionnaire}</p>
+            <p>Description:${questionnaired.description}</p>
         `
         questionnaired.questions.forEach((question, index) => {
             const questionDiv = document.createElement('div');
             questionDiv.innerHTML = `
-            <p>${index + 1}. Question:${question.question}</p>
-            <p>${question.choices.join('<br>')}</p>
-            `
+            <p> ${index + 1}.Question:${question.question}</p>
+                <p>${question.choices.join('<br>')}</p>
+        `
             questionnaireDiv.appendChild(questionDiv);
 
         });
+
 
         const addQuestionBtn = document.createElement('button');
         addQuestionBtn.textContent = "Add Question";
@@ -145,17 +159,42 @@ function displayQuestionnaires() {
             localStorage.setItem('questionnaire', JSON.stringify(questionnaires));
             console.log(questionnaired.questions.length);
         });
-
         questionnaireDiv.appendChild(addQuestionBtn);
 
+        questionnaireDiv.style.display = "none";
 
+        openBtn.addEventListener('click', () => {
+            if (!isOpen) {
+                //set is open to true so that the if condition will be false on the next click
+                isOpen = true;
+
+                questionnaireDiv.style.display = "block";
+
+                openBtn.textContent = "Close Questionnaire";
+
+            } else {
+                isOpen = false;
+
+                questionnaireDiv.style.display = "none";
+
+                openBtn.textContent = "Open Questionnaire";
+
+            }
+
+        });
+
+        displayQuestionnaire.appendChild(title);
         displayQuestionnaire.appendChild(questionnaireDiv);
+        displayQuestionnaire.appendChild(openBtn);
+
 
     });
 
 
+
 }
 displayQuestionnaires();
+
 
 const choices = document.querySelector('.choices');
 typeInput.addEventListener('change', () => {
