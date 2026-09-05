@@ -124,7 +124,7 @@ function displayQuestionnaires() {
 
         const questionnaireDiv = document.createElement('div');
         questionnaireDiv.innerHTML = `
-            <p> Questionnaire Title:${questionnaired.questionnaire}</p>
+            <p>Questionnaire Title:${questionnaired.questionnaire}</p>
             <p>Description:${questionnaired.description}</p>
         `
         questionnaired.questions.forEach((question, index) => {
@@ -133,6 +133,7 @@ function displayQuestionnaires() {
             <p> ${index + 1}.Question:${question.question}</p>
                 <p>${question.choices.join('<br>')}</p>
         `
+
             questionnaireDiv.appendChild(questionDiv);
 
         });

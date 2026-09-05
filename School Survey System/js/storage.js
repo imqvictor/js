@@ -5,10 +5,15 @@ function getUsers() {
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem('cUser'));
 }
+
 function getCurrentAdmin() {
     return JSON.parse(localStorage.getItem('cAdmin'));
 }
 
 function getQuestionnaire() {
     return JSON.parse(localStorage.getItem('questionnaire')) || [];
+}
+
+function getResponse() {
+    return JSON.parse(localStorage.getItem('response')) || [];
 }

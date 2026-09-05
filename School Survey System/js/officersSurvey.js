@@ -1,7 +1,13 @@
+
 const questionnaires = getQuestionnaire();
 console.log(questionnaires);
+const responses = getResponse();
+const user = getCurrentUser();
+console.log(user.username);
+console.log(user.id);
 
 const dispayQuestionnaire = document.querySelector('.dispayQuestionnaire');
+
 
 
 function displayQuestionnaires() {
@@ -16,11 +22,19 @@ function displayQuestionnaires() {
         title.textContent = questionnaire.questionnaire;
         const description = document.createElement('p');
         description.textContent = questionnaire.description;
+        //create an error meassage
+        let message = document.createElement('p');
+
+        //create an input field for school name
+        const schoolName = document.createElement('input');
+        schoolName.placeholder = "Enter school name";
 
         const questionContainer = document.createElement('div');
+        questionContainer.appendChild(schoolName);
 
         //display every question
         questionnaire.questions.forEach((quest, index) => {
+
 
             //create a div to hold all the questions
             const questionDiv = document.createElement('div');
@@ -41,9 +55,11 @@ function displayQuestionnaires() {
                     label.htmlFor = `question${quest.id}-choice-${choiceIndex}`;
                     label.textContent = choice;
 
+
                     questionDiv.appendChild(radioInput);
                     questionDiv.appendChild(label);
                     questionDiv.appendChild(document.createElement('br'));
+
                 });
             }
 
@@ -76,6 +92,7 @@ function displayQuestionnaires() {
                     label.htmlFor = `question${quest.id}-choice-${choiceIndex}`;
                     label.textContent = choice;
 
+
                     questionDiv.appendChild(radio);
                     questionDiv.appendChild(label);
                     questionDiv.appendChild(document.createElement('br'));
@@ -92,12 +109,13 @@ function displayQuestionnaires() {
                 numBer.id = `question-${quest.id}`;
 
 
+
                 questionDiv.appendChild(numBer);
                 questionDiv.appendChild(document.createElement('br'));
             }
 
-            questionContainer.appendChild(questionDiv);
 
+            questionContainer.appendChild(questionDiv);
 
         });
 
@@ -106,74 +124,97 @@ function displayQuestionnaires() {
         questionContainer.appendChild(submitBtn);
         submitBtn.addEventListener('click', () => {
 
+            message.innerHTML = "";
+
+            let isValid = true;
+
+            const schoolNameValue = schoolName.value.trim();
+
+            if (schoolNameValue === "") {
+                isValid = false;
+                message.textContent = "Please enter the school name";
+            }
+
+
+            // 2. Validate every question
+            for (const quest of questionnaire.questions) {
+
+                if (quest.type === "multiple-choice" || quest.type === "yes/no") {
+
+                    const selected = questionContainer.querySelector(
+                        `input[name="question-${quest.id}"]:checked`
+                    );
+
+                    if (!selected) {
+                        isValid = false;
+                        message.textContent = "Please answer all the questions";
+                        break;
+                    }
+                }
+
+                if (quest.type === "number" || quest.type === "short-text") {
+
+                    const input = questionContainer.querySelector(
+                        `#question-${quest.id}`
+                    );
+
+                    if (input.value.trim() === "") {
+                        isValid = false;
+                        message.textContent = "Please answer all the questions";
+                        break;
+                    }
+                }
+            }
+
+
+            //stop if something is misssing
+            if (!isValid) {
+                return;
+            }
+
+            //Check if the questionnaire has already been submitted
+            const questionnaireAlreadyExist = responses.some(response =>
+                response.id === questionnaire.id &&
+                response.userID === user.id
+            );
+
+            //if true message
+            if (questionnaireAlreadyExist) {
+                message.textContent = "You have already submitted this questionnaire.";
+                return;
+            }
+
+            //create response
             const response = {
+                userID: user.id,
                 id: questionnaire.id,
                 questionnaire: questionnaire.questionnaire,
                 description: questionnaire.description,
-                answers: []
+                answers: [],
+                username: user.username,
+                school: schoolNameValue
             }
 
-            questionnaire.questions.forEach(quest => {
+            //collect answers
+            for (const quest of questionnaire.questions) {
 
                 let answerValue;
 
-                if (quest.type === "multiple-choice") {
+                if (quest.type === "multiple-choice" || quest.type === "yes/no") {
 
-                    const selected = document.querySelector(
-                        `input[name=question-${quest.id}]:checked`);
-                    console.log(selected);
-
-                    if (!selected) {
-
-                        alert("please answer all questions");
-                        return;
-                    }
+                    const selected = questionContainer.querySelector(
+                        `input[name="question-${quest.id}"]:checked`
+                    );
 
                     answerValue = selected.value;
+
                 }
 
-                if (quest.type === "yes/no") {
+                if (quest.type === "number" || quest.type === "short-text") {
 
-                    const selected = document.querySelector(
-                        `input[name=question-${quest.id}]:checked`);
-                    console.log(selected);
-
-                    if (!selected) {
-
-                        alert("please answer all questions");
-                        return;
-                    }
-
-                    answerValue = selected.value;
-                }
-
-
-                if (quest.type === "number") {
-
-                    const input = document.querySelector(
-                        `question-${quest.id}`);
-                    console.log(input);
-
-                    if (input.value === "") {
-
-                        alert("please answer all questions");
-                        return;
-                    }
-
-                    answerValue = input.value;
-                }
-
-                if (quest.type === "short-text") {
-
-                    const input = document.querySelector(
-                        `question-${quest.id}`);
-                    console.log(input);
-
-                    if (input.value.trim() === "") {
-
-                        alert("please answer all questions");
-                        return;
-                    }
+                    const input = questionContainer.querySelector(
+                        `#question-${quest.id}`
+                    );
 
                     answerValue = input.value;
                 }
@@ -186,10 +227,18 @@ function displayQuestionnaires() {
                 };
 
                 response.answers.push(answer);
+            }
 
-                console.log(response);
-            })
 
+            //if not save
+            responses.push(response);
+
+            submitBtn.style.backgroundColor = "green";
+
+            //SAVE ONLY AFTER ALL THE QUESTIONS HAVE BEEN PROCESSED
+            localStorage.setItem('response', JSON.stringify(responses));
+            console.log(response);
+            console.log(responses);
         })
 
         questionContainer.style.display = "none";
@@ -224,6 +273,7 @@ function displayQuestionnaires() {
 
         dispayQuestionnaire.appendChild(title);
         dispayQuestionnaire.appendChild(description);
+        dispayQuestionnaire.appendChild(message);
         dispayQuestionnaire.appendChild(questionContainer);
         dispayQuestionnaire.appendChild(openBtn);
 
