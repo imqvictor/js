@@ -20,6 +20,8 @@ function display() {
         questioNnaire.textContent = `${response.questionnaire}`;
         const description = document.createElement('h4');
         description.textContent = `${response.description}`;
+        const school = document.createElement('h4');
+        school.textContent = response.school;
 
 
         response.answers.forEach((answer, index) => {
@@ -60,6 +62,7 @@ function display() {
 
 
         displayResponses.appendChild(userName);
+        displayResponses.appendChild(school);
         displayResponses.appendChild(questioNnaire);
         displayResponses.appendChild(responseDiv);
         displayResponses.appendChild(openResponse);

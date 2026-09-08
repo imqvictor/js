@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navBgc: #000;
+    --aColor: #fff;
+}
+
+nav {
+    background-color: var(--navBgc);
+
+    ul,
+    li,
+    a {
+        list-style-type: none;
+        text-decoration: none;
+        color: var(--aColor);
+        display: flex;
+        justify-content: end;
+        padding: 7px;
+        padding-right: 1rem;
+    }
+}

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {}
+
+body {
+    font-family: sans-serif;
+    background-color: #f5f5f5;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h2 {
+        padding-left: 1rem;
+    }
+}
+
+#infoCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+#infoCards>div {
+    border: 1px solid #000;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
