@@ -1,0 +1,75 @@
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0.5rem;
+    padding: 5px;
+}
+
+[popover] {
+    width: 450px;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    border: none;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+[popover]::backdrop {
+    background-color: rgb(0, 0, 0, 0.03);
+    backdrop-filter: blur(4px);
+}
+
+.displayQuestionnaire {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1rem;
+
+}
+
+.displayQuestionnaire>div {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 9px;
+}
+
+#openBtn {
+    width: fit-content;
+    padding: 4px;
+    border: none;
+    background-color: #000;
+    border-radius: 2px;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    #popaBtn {
+        width: fit-content;
+        align-self: flex-end;
+        margin: 1rem;
+        padding: 6px;
+    }
+
+}
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.questionnaireDiv>p {
+    margin-bottom: 1rem;
+}
+
+.questionDiv {
+    margin: 1rem;
+}

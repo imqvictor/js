@@ -9,6 +9,7 @@ function display() {
 
     responses.forEach(response => {
         const responseDiv = document.createElement('div');
+        responseDiv.className = "responseDiv";
         responseDiv.innerHTML = `
         <h4>${response.description}</h4>
         `
@@ -21,24 +22,24 @@ function display() {
         const description = document.createElement('h4');
         description.textContent = `${response.description}`;
         const school = document.createElement('h4');
-        school.textContent = response.school;
+        school.textContent = `School: ${response.school}`;
 
 
         response.answers.forEach((answer, index) => {
             const answerDiv = document.createElement('div');
-            answerDiv.innerHTML = `
-             <p>${index + 1}. ${answer.question}</p>
-             <p>findings: ${answer.answer}</p>
+            answerDiv.className = "answerDiv";
+            answerDiv.innerHTML = `          
+             <p>${index + 1}. ${answer.question}</p>          
+             <p>findings: ${answer.answer}</p>          
             `
 
             responseDiv.appendChild(answerDiv);
-
-
         })
 
         responseDiv.style.display = "none";
 
         const openResponse = document.createElement('button');
+        openResponse.id = "openResponse";
         openResponse.textContent = "OpenResponse";
         openResponse.addEventListener('click', () => {
 
@@ -60,12 +61,17 @@ function display() {
 
         });
 
+        //create a container to hold each response
+        const responseContainer = document.createElement('div');
+        responseContainer.className = "responseContainer";
 
-        displayResponses.appendChild(userName);
-        displayResponses.appendChild(school);
-        displayResponses.appendChild(questioNnaire);
-        displayResponses.appendChild(responseDiv);
-        displayResponses.appendChild(openResponse);
+        responseContainer.appendChild(questioNnaire);
+        responseContainer.appendChild(school);
+        responseContainer.appendChild(userName);
+        responseContainer.appendChild(responseDiv);
+        responseContainer.appendChild(openResponse);
+
+        displayResponses.appendChild(responseContainer);
     });
 
 }

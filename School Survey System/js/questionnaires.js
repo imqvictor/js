@@ -115,22 +115,26 @@ function displayQuestionnaires() {
         let isOpen = false;
 
         const openBtn = document.createElement('button');
+        openBtn.id = "openBtn";
         openBtn.textContent = "Open Questionnaire";
 
 
         const title = document.createElement('h2');
+        title.id = "title";
         title.textContent = questionnaired.questionnaire;
 
 
         const questionnaireDiv = document.createElement('div');
+        questionnaireDiv.className = "questionnaireDiv";
         questionnaireDiv.innerHTML = `
-            <p>Questionnaire Title:${questionnaired.questionnaire}</p>
-            <p>Description:${questionnaired.description}</p>
+            <p>Questionnaire Title: ${questionnaired.questionnaire}</p>
+            <p>Description: ${questionnaired.description}</p>
         `
         questionnaired.questions.forEach((question, index) => {
             const questionDiv = document.createElement('div');
+            questionDiv.className = "questionDiv";
             questionDiv.innerHTML = `
-            <p> ${index + 1}.Question:${question.question}</p>
+            <p> ${index + 1}. Question:${question.question}</p>
                 <p>${question.choices.join('<br>')}</p>
         `
 
@@ -155,6 +159,8 @@ function displayQuestionnaires() {
 
                 currentQuestionnaireId = questionnaireId.id;
                 createQuestionnaire.textContent = "Add Question";
+                //make the button to open the popOver
+
             }
             console.log(questionnaireId);
             localStorage.setItem('questionnaire', JSON.stringify(questionnaires));
@@ -184,10 +190,16 @@ function displayQuestionnaires() {
 
         });
 
-        displayQuestionnaire.appendChild(title);
-        displayQuestionnaire.appendChild(questionnaireDiv);
-        displayQuestionnaire.appendChild(openBtn);
+        //create a container to hold each questionnaire
+        const cont = document.createElement('div');
+        cont.className = "cont";
 
+
+        cont.appendChild(title);
+        cont.appendChild(questionnaireDiv);
+        cont.appendChild(openBtn);
+
+        displayQuestionnaire.appendChild(cont);
 
     });
 

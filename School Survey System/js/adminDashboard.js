@@ -32,7 +32,7 @@ function displayStatistics() {
 
     });
 
-
+    //create an object to hold the statics data
     const statisticsData = {
         questionnaires: `${questionnaires.length}`,
         enumerators: `${users.length}`,
