@@ -18,7 +18,6 @@ const statistics = document.querySelector('.statistics');
 function displayStatistics() {
     statistics.innerHTML = "";
 
-
     //create a school array from responses
     const schools = [];
 

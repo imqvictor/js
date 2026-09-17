@@ -24,12 +24,14 @@ function displayQuestionnaires() {
         description.textContent = questionnaire.description;
         //create an error meassage
         let message = document.createElement('p');
+        message.id = 'message';
 
         //create an input field for school name
         const schoolName = document.createElement('input');
         schoolName.placeholder = "Enter school name";
 
         const questionContainer = document.createElement('div');
+        questionContainer.id = 'questionContainer';
         questionContainer.appendChild(schoolName);
 
         //display every question
@@ -38,6 +40,7 @@ function displayQuestionnaires() {
 
             //create a div to hold all the questions
             const questionDiv = document.createElement('div');
+            questionDiv.className = 'questionDiv';
             if (quest.type === "multiple-choice") {
 
                 questionDiv.innerHTML = `
@@ -69,6 +72,7 @@ function displayQuestionnaires() {
                    `
                 const textInput = document.createElement('input');
                 textInput.type = "text";
+                textInput.className = 'input';  //for css
                 textInput.id = `question-${quest.id}`;
 
 
@@ -107,7 +111,7 @@ function displayQuestionnaires() {
                 const numBer = document.createElement('input');
                 numBer.type = 'number';
                 numBer.id = `question-${quest.id}`;
-
+                numBer.className = 'input'; //for css
 
 
                 questionDiv.appendChild(numBer);
@@ -120,6 +124,7 @@ function displayQuestionnaires() {
         });
 
         const submitBtn = document.createElement('button');
+        submitBtn.id = 'submitBtn';
         submitBtn.textContent = "SUBMIT";
         questionContainer.appendChild(submitBtn);
         submitBtn.addEventListener('click', () => {
@@ -244,6 +249,7 @@ function displayQuestionnaires() {
         questionContainer.style.display = "none";
 
         const openBtn = document.createElement('button');
+        openBtn.id = 'openBtn';
         openBtn.textContent = "Open questionnaire";
         openBtn.addEventListener('click', () => {
             if (!isOpen) {
@@ -271,11 +277,16 @@ function displayQuestionnaires() {
 
         });
 
-        dispayQuestionnaire.appendChild(title);
-        dispayQuestionnaire.appendChild(description);
-        dispayQuestionnaire.appendChild(message);
-        dispayQuestionnaire.appendChild(questionContainer);
-        dispayQuestionnaire.appendChild(openBtn);
+        const cards = document.createElement('div');
+        cards.className = 'cards';
+
+        cards.appendChild(title);
+        cards.appendChild(description);
+        cards.appendChild(message);
+        cards.appendChild(questionContainer);
+        cards.appendChild(openBtn);
+
+        dispayQuestionnaire.appendChild(cards);
 
     });
 
