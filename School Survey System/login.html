@@ -5,23 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-    <div class="card">
-        <h2>School Survey System</h2>
-        <form id="form">
-            <label for="username">user name:</label>
-            <input type="text" id="username" required>
-            <p id="umessage"></p>
-            <label for="password">password:</label>
-            <input type="password" id="password" required>
-            <p id="pmessage"></p>
-            <button type="submit" id="submitBtn">LOGIN</button>
-        </form>
 
-        <p>Don't have an account?<a href="signUp.html">signUp</a></p>
+    <div class="card">
+
+        <div class="im-wrapper">
+            <img src="assets/survey1.png" alt="enumerators" width="150px">
+        </div>
+
+        <div class="container">
+            <h2>School Survey System</h2>
+            <form id="form">
+                <label for="username">user name:</label>
+                <input type="text" id="username" required>
+                <p id="umessage"></p>
+                <label for="password">password:</label>
+                <input type="password" id="password" required>
+                <p id="pmessage"></p>
+                <button type="submit" id="submitBtn">LOGIN</button>
+            </form>
+
+            <p>Don't have an account?<a href="signUp.html">signUp</a></p>
+        </div>
+
     </div>
+
+
 
     <script src="js/storage.js"></script>
     <script src="js/login.js"></script>

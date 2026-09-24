@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {}
+
+body {
+    margin: 3rem;
+    background-image: url('../assets/survey4.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: auto;
+    justify-content: center;
+    padding: 1rem;
+    gap: 0.4rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    input {
+        width: 300px;
+        padding: 6px;
+        border: none;
+        background-color: rgb(203, 197, 197);
+    }
+
+    button {
+        width: fit-content;
+        padding: 4px 12px;
+        background-color: #000;
+        color: #fff;
+    }
+}

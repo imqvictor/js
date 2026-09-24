@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {}
+
+body {
+    margin: 5rem;
+}
+
+.card {
+    width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #000;
+}
+
+.im-wrapper {
+    border: 1px solid #000;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    input {
+        width: 300px;
+        padding: 8px;
+        border: none;
+        background-color: rgb(188, 186, 186);
+        color: #fff;
+    }
+
+    button {
+        width: fit-content;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: #000;
+        color: #fff;
+    }
+}
