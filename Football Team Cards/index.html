@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Team Stats</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card">
+        <div class="head">
+            <h2>TEAM</h2>
+            <div class="nav">
+                <p id="team">Team: Barcelona</p>
+                <p id="sport">Sport: Football</p>
+                <p id="year">Year: 2012</p>
+                <p id="hCoach">Head Coach: Pep Guardiola</p>
+            </div>
+            <div>
+                <label for="filterLeague">choose League:</label>
+                <select name="filterLeague" id="filterLeague">
+                    <option value="" selected>select</option>
+                    <option value="All">All</option>
+                    <option value="Superliga">Superliga</option>
+                    <option value="Premiership">Premiership</option>
+                    <option value="Premiership Play-Offs">Premiership Play-Offs</option>
+                    <option value="Superliga Play-offs">Superliga Play-offs</option>
+                </select>
+                <label for="filterTeam">Choose Team:</label>
+                <select name="filterTeam" id="filterTeam">
+                    <option value="" selected>select</option>
+                    <option value="All">All</option>
+                    <option value="Celtic">Celtic</option>
+                    <option value="Rangers">Rangers</option>
+                    <option value="Hibernian">Hibernian</option>
+                    <option value="FC København">FC København</option>
+                    <option value="Silkeborg IF">Silkeborg IF</option>
+                    <option value="Ayr United">Ayr United</option>
+                    <option value="Kilmarnock">Kilmarnock</option>
+                    <option value="Raith Rovers">Raith Rovers</option>
+                    <option value="Horsens">Horsens</option>
+                    <option value="Ross County">Ross County</option>
+                    <option value="Livingston">Livingston</option>
+                    <option value="Inverness CT">Inverness CT</option>
+                    <option value="Aberdeen">Aberdeen</option>
+                    <option value="Dundee United">Dundee United</option>
+                    <option value="Dundee">Dundee</option>
+                    <option value="Dunfermline Athletic">Dunfermline Athletic</option>
+                    <option value="Brøndby IF">Brøndby IF</option>
+                    <option value="Motherwell">Motherwell</option>
+                    <option value="Hearts">Hearts</option>
+                    <option value="Hamilton Academical">Hamilton Academical</option>
+                    <option value="Partick Thistle">Partick Thistle</option>
+                    <option value="Greenock Morton">Greenock Morton</option>
+                    <option value="Sønderjyske Fodbold">Sønderjyske Fodbold</option>
+                    <option value="St. Mirren">St. Mirren</option>
+                    <option value="St. Johnstone">St. Johnstone</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="display-cards"></div>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
