@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Formatter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="top">
+            <h2>Today's Date</h2>
+            <div id="bar"></div>
+        </div>
+
+        <select name="prevDate" id="prevDate">
+            <option value="dd-mm-yyyy">Day, Month, Year</option>
+            <option value="yyyy-mm-dd">Year, Month, Day</option>
+            <option value="mm-dd-yyyy-HH-MM">Month, Day, Year, Hours, Minutes</option>
+        </select>
+
+        <div id="date"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

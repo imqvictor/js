@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 2rem;
+    background-color: rgb(2, 2, 56);
+}
+
+.card {
+    width: 300px;
+    margin: auto;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    h2 {
+        font-size: 40px;
+        font-weight: 600px;
+    }
+
+    div {
+        height: 0.7rem;
+        width: 10rem;
+        background-color: #ffb300;
+    }
+}
+
+#prevDate {
+    width: 22rem;
+    height: 2rem;
+    border: none;
+}
+
+#date {
+    width: 25rem;
+    font-size: 25px;
+    font-weight: 600px;
+    text-align: center;
+}
