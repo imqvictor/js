@@ -32,7 +32,7 @@ prevDate.addEventListener('change', () => {
             break;
 
         case 'mm-dd-yyyy-HH-MM':
-            date.textContent = `${month}-${day}-${year} ${hour}Hour ${min}Miinutes`;
+            date.textContent = `${month}-${day}-${year} ${hour}Hour ${min}Minutes`;
             break;
 
         default:
